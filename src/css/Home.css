@@ -1,31 +1,188 @@
-
-.Homecontainer{
-    height: 100vh;
-    width: 100vw;
-    background: #000000;
-
+/* Base Styles */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Dark Mode */
+body.dark {
+  background-color: #121212;
+  color: #eaeaea;
+}
+
+/* Full Screen Container */
+.Homecontainer {
+  height: 100vh;
+  width: 100vw;
+  background: var(--background-color, #ffffff); /* Default to white for light mode */
+  transition: background-color 0.3s ease;
+}
+
+/* Hero Section */
 .hero-section {
-    background-color: black;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  /* Button enhancements */
-  .hero-button {
-    @apply bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition ease-in-out duration-300;
-  }
-  
-  /* Gallery Card Hover Effect */
-  .cuisine-card:hover,
-  .place-card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    background-color: rgb(162, 192, 243);
-  }
-  
-  /* Typography Enhancements */
-  .cuisine-title,
-  .place-title {
-    @apply text-xl font-semibold text-gray-800;
-  }
+  background-color: #3498db;
+  background-size: cover;
+  background-position: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Button enhancements */
+.hero-button {
+  padding: 12px 24px;
+  background-color: #2980b9;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #1d6fa5;
+}
+
+/* Gallery Card Hover Effect */
+.cuisine-card:hover,
+.place-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+  background-color: #d5e6f1; /* Light hover effect */
+}
+
+/* Typography Enhancements */
+.cuisine-title,
+.place-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+/* Light Mode Specific Styles */
+body:not(.dark) {
+  --background-color: #ffffff;
+  --text-color: #333;
+  --hero-bg-color: rgba(0, 0, 0, 0.4); /* Light overlay for hero section */
+  --card-bg-color: #ffffff;
+  --hover-bg-color: #d5e6f1;
+  --button-bg-color: #3498db;
+  --button-text-color: white;
+}
+
+body.dark {
+  --background-color: #121212;
+  --text-color: #eaeaea;
+  --hero-bg-color: rgba(0, 0, 0, 0.7); /* Dark overlay for hero section */
+  --card-bg-color: #333333;
+  --hover-bg-color: #6d7d8f;
+  --button-bg-color: #2980b9;
+  --button-text-color: white;
+}
+
+/* Apply the Light Mode and Dark Mode variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Section Styling */
+section {
+  padding: 4rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+/* Cuisine Card Styling */
+.cuisine-card, .place-card {
+  background-color: var(--card-bg-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.cuisine-card:hover, .place-card:hover {
+  background-color: var(--hover-bg-color);
+}
+
+/* Light Mode and Dark Mode Text Color for Cuisine and Place Titles */
+body:not(.dark) .cuisine-title,
+body:not(.dark) .place-title {
+  color: #333; /* Light mode text color */
+}
+
+body.dark .cuisine-title,
+body.dark .place-title {
+  color: #eaeaea; /* Dark mode text color */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Grid Layout for Cuisines and Places */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+/* Dark Mode Hero Section */
+body.dark .hero-section {
+  background-color: #2c3e50;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Light Mode Hero Section */
+body:not(.dark) .hero-section {
+  background-color: #3498db;
+}
+
+/* Button Styling in Dark Mode and Light Mode */
+body.dark .hero-button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+}
+
+body:not(.dark) .hero-button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+}
+
+/* Toggle Button for Light/Dark Mode */
+.theme-toggle-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px; /* Move the button to the left */
+  z-index: 10;
+}
+
+.theme-toggle-btn {
+  padding: 12px 16px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-btn:hover {
+  background-color: #1d6fa5;
+}
